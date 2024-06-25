@@ -14,11 +14,11 @@ const createBook = (payload) => {
   } = payload;
 
   if (!name) {
-    throw new Error('Gagal menambahkan buku baru. Silakan isi nama buku.');
+    throw new Error('Gagal menambahkan buku. Mohon isi nama buku');
   }
 
   if (readPage > pageCount) {
-    throw new Error('Gagal menambahkan buku baru. "readPage" tidak boleh lebih besar dari "pageCount".');
+    throw new Error('Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount');
   }
 
   const id = nanoid(16);
@@ -55,11 +55,11 @@ const updateBook = (payload) => {
   } = payload;
 
   if (!name) {
-    throw new Error('Gagal mengedit buku. Silakan isi nama buku.');
+    throw new Error('Gagal memperbarui buku. Mohon isi nama buku');
   }
 
   if (readPage > pageCount) {
-    throw new Error('Gagal mengedit buku. "readPage" tidak boleh lebih besar dari "pageCount".');
+    throw new Error('Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount');
   }
   const finished = pageCount === readPage;
 
@@ -80,7 +80,7 @@ const updateBook = (payload) => {
 const findBookById = (bookId) => {
   const book = books.find((buku) => buku.id === bookId);
   if (book === undefined) {
-    throw new Error('Mohon maaf, buku tidak ditemukan.');
+    throw new Error('Buku tidak ditemukan');
   }
   return book;
 };
@@ -88,7 +88,7 @@ const findBookById = (bookId) => {
 const findBookIndexById = (bookId) => {
   const book = books.findIndex((buku) => buku.id === bookId);
   if (book === -1) {
-    throw new Error('Gagal menemukan buku. Mohon maaf, ID tidak ditemukan.');
+    throw new Error('Gagal memperbarui buku. Id tidak ditemukan');
   }
   return book;
 };

@@ -14,13 +14,13 @@ const routes = [
   },
   {
     method: 'GET',
-    path: '/books/{bookId}',
-    handler: getBook,
+    path: '/books',
+    handler: getAllBooks,
   },
   {
     method: 'GET',
-    path: '/books',
-    handler: getAllBooks,
+    path: '/books/{bookId}',
+    handler: getBook,
   },
   {
     method: 'PUT',

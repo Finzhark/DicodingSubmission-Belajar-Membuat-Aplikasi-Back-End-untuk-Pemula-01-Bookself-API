@@ -13,7 +13,7 @@ const addNewBook = (request, h) => {
 
     const response = h.response({
       status: 'success',
-      message: 'Buku berhasil ditambahkan.',
+      message: 'Buku berhasil ditambahkan',
       data: {
         bookId: newBook.id,
       },
@@ -27,32 +27,6 @@ const addNewBook = (request, h) => {
       message: error.message,
     });
     response.code(400);
-    return response;
-  }
-};
-
-const getBook = (request, h) => {
-  try {
-    const { bookId } = request.params;
-
-    const book = findBookById(bookId);
-
-    const response = h.response({
-      status: 'success',
-      data: {
-        book,
-      },
-    });
-
-    response.code(200);
-    return response;
-  } catch (error) {
-    const response = h.response({
-      status: 'fail',
-      message: error.message,
-    });
-
-    response.code(404);
     return response;
   }
 };
@@ -93,6 +67,32 @@ const getAllBooks = (request, h) => {
   return response;
 };
 
+const getBook = (request, h) => {
+  try {
+    const { bookId } = request.params;
+
+    const book = findBookById(bookId);
+
+    const response = h.response({
+      status: 'success',
+      data: {
+        book,
+      },
+    });
+
+    response.code(200);
+    return response;
+  } catch (error) {
+    const response = h.response({
+      status: 'fail',
+      message: error.message,
+    });
+
+    response.code(404);
+    return response;
+  }
+};
+
 const editBook = (request, h) => {
   try {
     const { bookId } = request.params;
@@ -105,7 +105,7 @@ const editBook = (request, h) => {
     books[index] = updatedBook;
     const response = h.response({
       status: 'success',
-      message: 'Buku berhasil diedit.',
+      message: 'Buku berhasil diperbarui',
     });
 
     response.code(200);
@@ -117,8 +117,8 @@ const editBook = (request, h) => {
     });
 
     if (
-      error.message === 'Gagal mengedit buku. Silakan masukkan nama buku.'
-      || error.message === 'Gagal mengedit buku. "readPage" tidak boleh lebih besar dari "pageCount"!') {
+      error.message === 'Gagal memperbarui buku. Mohon isi nama buku'
+      || error.message === 'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount') {
       response.code(400);
       return response;
     }
@@ -135,17 +135,15 @@ const deleteBook = (request, h) => {
     books.splice(index, 1);
     const response = h.response({
       status: 'success',
-      message: 'Buku berhasil dihapus.',
+      message: 'Buku berhasil dihapus',
     });
-
     response.code(200);
     return response;
   } catch (error) {
     const response = h.response({
       status: 'fail',
-      message: 'Buku gagal dihapus. Mohon maaf, ID tidak ditemukan.',
+      message: 'Buku gagal dihapus. Id tidak ditemukan',
     });
-
     response.code(404);
     return response;
   }
