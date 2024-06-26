@@ -96,12 +96,14 @@ const getBook = (request, h) => {
 const editBook = (request, h) => {
   try {
     const { bookId } = request.params;
-
-    const updatedBook = updateBook(request.payload);
-    updatedBook.id = bookId;
-    updatedBook.updatedAt = new Date().toISOString();
-
     const index = findBookIndexById(bookId);
+
+    const updatedBook = updateBook({
+      ...request.payload,
+      id: bookId,
+      insertedAt: books[index].insertedAt,
+    });
+
     books[index] = updatedBook;
     const response = h.response({
       status: 'success',
