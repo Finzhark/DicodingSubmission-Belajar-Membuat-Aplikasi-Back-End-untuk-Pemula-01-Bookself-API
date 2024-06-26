@@ -74,7 +74,6 @@ const updateBook = (payload) => {
     finished,
     reading,
     insertedAt,
-    updatedAt: new Date().toISOString(),
   };
 };
 
