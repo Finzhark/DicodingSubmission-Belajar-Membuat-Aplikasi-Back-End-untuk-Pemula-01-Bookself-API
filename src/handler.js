@@ -102,7 +102,7 @@ const editBook = (request, h) => {
     updatedBook.updatedAt = new Date().toISOString();
 
     const index = findBookIndexById(bookId);
-    books[index] = updatedBook;
+    books[index] = {...books[index], ...updatedBook,};
     const response = h.response({
       status: 'success',
       message: 'Buku berhasil diperbarui',

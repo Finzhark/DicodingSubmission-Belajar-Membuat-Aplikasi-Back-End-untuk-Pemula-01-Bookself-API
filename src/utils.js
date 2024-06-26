@@ -51,7 +51,6 @@ const updateBook = (payload) => {
     pageCount,
     readPage,
     reading,
-    insertedAt,
   } = payload;
 
   if (!name) {
@@ -73,7 +72,7 @@ const updateBook = (payload) => {
     readPage,
     finished,
     reading,
-    insertedAt,
+    updatedAt : new Date().toISOString(),
   };
 };
 
